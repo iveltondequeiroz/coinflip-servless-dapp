@@ -10,8 +10,6 @@ async function login() {
             console.log(error);
         }
     }
-
-   
     document.getElementById("login_button").style.display="none";
     document.getElementById("game").style.display="block";
 }
@@ -27,6 +25,12 @@ async function flip(side){
     .send({from: ethereum.selectedAddress, value: amount})
     .on('receipt', function(receipt){
         console.log(receipt);
+        if(receipt.events.bet.returnValues.win){
+            alert("you won!!!");
+        } else {
+            alert("you lost...");
+
+        }
     });
 }
 
